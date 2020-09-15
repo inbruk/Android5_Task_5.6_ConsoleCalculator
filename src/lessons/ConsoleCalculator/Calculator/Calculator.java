@@ -1,47 +1,48 @@
 /*
  Учебное задание.
  Курс: разработчик Android. Раздел: Java Core,
- Задание: 5.6.* Практика — пишем калькулятор
- Исполнитель:
- Дата:
+ Задание: 5.6 Практика — пишем калькулятор
+ Исполнитель: Gurf ( Устюжинский Геннадий Маркович )
+ Дата: 15.09.2020
  Группа: Android-5
 */
 package lessons.ConsoleCalculator.Calculator;
 
 public class Calculator implements ICalculator {
-    private float opera1;
-    private Action action;
 
-    public void SetOperand1(float op1) {
-        opera1 = op1;
-    }
-    public void SetAction(Action act) {
-        action = act;
-    }
-    public void SetOperand2CalculateAndPrint(float op2) {
-        float result;
+    private float firstOperand;
+    public void SetOperand1(float a) {
+        firstOperand = a;
 
-        switch(action){
+    }
+
+    private Action operator;
+    public void SetAction(Action arifmOperator) {
+        operator = arifmOperator;
+
+    }
+
+    public void SetOperand2CalculateAndPrint(float b) {
+        float itog = b;
+        switch (operator) {
+
             case ADD:
-                result = opera1 + op2;
-                System.out.println( Float.toString(opera1) + " + " + Float.toString(op2) + " = " + Float.toString(result) );
-                opera1 = result;
+                itog = firstOperand + itog;
                 break;
+
             case SUB:
-                result = opera1 - op2;
-                System.out.println( Float.toString(opera1) + " - " + Float.toString(op2) + " = " + Float.toString(result) );
-                opera1 = result;
+                itog = firstOperand - itog;
                 break;
+
             case MUL:
-                result = opera1 * op2;
-                System.out.println( Float.toString(opera1) + " * " + Float.toString(op2) + " = " + Float.toString(result) );
-                opera1 = result;
+                itog = firstOperand * itog;
                 break;
+
             case DIV:
-                result = opera1 / op2;
-                System.out.println( Float.toString(opera1) + " / " + Float.toString(op2) + " = " + Float.toString(result) );
-                opera1 = result;
+                itog = firstOperand / itog;
                 break;
         }
+        System.out.println("Ответ: " + itog);
+		firstOperand = itog;
     }
 }
